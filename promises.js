@@ -16,12 +16,10 @@ const CustomPromise = function (callback) {
                 this.__error__.push(rejectCb)
             }
         } else {
-            if (successCb) {
-                this.__error__.length = 0;
+            if (this._PromiseState == "fulfilled") {
                 successCb(this._ok)
             }
-            if (rejectCb) {
-                this.__success__.length = 0;
+            if (this._PromiseState == "rejected") {
                 rejectCb(this._err)
             }
         }
