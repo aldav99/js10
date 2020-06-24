@@ -17,9 +17,11 @@ const CustomPromise = function (callback) {
             }
         } else {
             if (successCb) {
+                this.__error__.length = 0;
                 successCb(this._ok)
             }
             if (rejectCb) {
+                this.__success__.length = 0;
                 rejectCb(this._err)
             }
         }
@@ -54,3 +56,5 @@ CustomPromise.reject = function (err) {
     return new CustomPromise((reject) => reject(err));
 };
 
+// customPromise = new CustomPromise((resolve, reject) => resolve(1));
+// customPromiseErr = new CustomPromise((resolve, reject) => reject(new Error("===Error")));
